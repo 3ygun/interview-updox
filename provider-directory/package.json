@@ -11,6 +11,8 @@
     "react-dom": "^15.5.4"
   },
   "devDependencies": {
+    "@types/enzyme": "^2.8.0",
+    "enzyme": "^2.8.2",
     "react-scripts-ts": "2.2.0"
   },
   "scripts": {
