@@ -25,6 +25,7 @@ export class ProviderEditor extends Component<{manager: ProviderManager}, Provid
 
     handleSubmit(event: any) {
         const provider: Provider = {
+            id: 0,
             email_address: this.state.email_address,
             first_name: this.state.first_name,
             last_name: this.state.last_name,

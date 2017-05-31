@@ -7,6 +7,9 @@ export class ProviderCard extends React.Component<Provider, {}> {
         return (
             <div className="card">
                 <div className="card-block row">
+                    <div className="col-1">
+                        {this.props.children}
+                    </div>
                     <div className="col">
                         <h2>{this.props.last_name}, {this.props.first_name}</h2>
                         <h4>{this.props.email_address}</h4>
