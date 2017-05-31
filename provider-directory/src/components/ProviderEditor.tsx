@@ -48,23 +48,23 @@ export class ProviderEditor extends React.Component<Props, Provider> {
                 <h2>Create Provider</h2>
 
                 <form onSubmit={this.handleSubmit}>
-                    <label>
+                    <label className="row">
                         Last Name:
                         <input type="text" name="last_name" value={this.state.last_name} onChange={this.handleChange} />
                     </label>
-                    <label>
+                    <label className="row">
                         First Name:
                         <input type="text" name="first_name" value={this.state.first_name} onChange={this.handleChange} />
                     </label>
-                    <label>
+                    <label className="row">
                         Email Address:
                         <input type="text" name="email_address" value={this.state.email_address} onChange={this.handleChange} />
                     </label>
-                    <label>
+                    <label className="row">
                         Specialty:
                         <input type="text" name="specialty" value={this.state.specialty} onChange={this.handleChange} />
                     </label>
-                    <label>
+                    <label className="row">
                         Practice Name:
                         <input type="text" name="practice_name" value={this.state.practice_name} onChange={this.handleChange} />
                     </label>
