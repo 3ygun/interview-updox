@@ -1,18 +1,28 @@
+import { observable, computed, action, useStrict } from 'mobx';
+
 import { PROVIDERS } from './mock-providers';
 import { Provider } from '../types';
 
-export class ProviderManager {
-    providers: Provider[];
+useStrict(true);
 
-    constructor() {
-        this.providers = PROVIDERS;
+export class ProviderManager {
+    @observable public providers: Provider[];
+
+    constructor(
+        providers: Provider[] = PROVIDERS
+    ) { 
+        this.providers = providers;
     }
 
+    @action
     addProvider(provider: Provider): void {
         this.providers.push(provider);
     }
 
-    getProviders(): Provider[] {
+    @computed
+    get getProviders(): Provider[] {
         return this.providers;
     }
 }
+
+export default ProviderManager;

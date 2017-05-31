@@ -1,26 +1,21 @@
 import * as React from 'react';
+import { Component } from 'react';
+import { observer } from 'mobx-react';
 
-import { Props } from './App';
-import { Provider } from '../types';
+import { ProviderManager } from '../data/ProviderManager';
+import { Provider, ProviderClass } from '../types';
 
-const blank: Provider = {
-    email_address: '',
-    first_name: '',
-    last_name: '',
-    practice_name: '',
-    specialty: ''
-};
-
-export class ProviderEditor extends React.Component<Props, Provider> {
-    constructor(props: Props) {
+@observer
+export class ProviderEditor extends Component<{manager: ProviderManager}, Provider> {
+    constructor(props: {manager: ProviderManager}) {
         super(props);
 
-        this.state = blank;
+        this.state = new ProviderClass();
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
+    
     handleChange(event: any) {
         const name = event.target.name;
         const value = event.target.value;
@@ -37,8 +32,8 @@ export class ProviderEditor extends React.Component<Props, Provider> {
             specialty: this.state.specialty
         }
 
-        this.props.providerManager.addProvider(provider);
-        this.state = blank;
+        this.props.manager.addProvider(provider);
+        this.setState(new ProviderClass());
         event.preventDefault();
     }
 

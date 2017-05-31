@@ -1,20 +1,23 @@
 import * as React from 'react';
+import { Component } from 'react';
+import { observer } from 'mobx-react';
 
-import { Props } from './App';
+import { ProviderManager } from '../data/ProviderManager';
 import { ProviderCard } from './ProviderCard';
 
-export class ProviderDisplay extends React.Component<Props, object> {
+@observer
+export class ProviderDisplay extends Component<{ manager: ProviderManager }, {}> {
     render() {
+        const providers = this.props.manager.getProviders;
+
         return (
             <div>
                 <h2>Provider List</h2>
 
                 <div>
-                    {this.props.providerManager.getProviders().map(
-                        (provider, uid) => {
-                            return <ProviderCard {...provider} key={uid} />;
-                        }
-                    )}
+                    {providers.map((provider, uid) => {
+                        return <ProviderCard {...provider} key={uid} />;
+                    })}
                 </div>
             </div>
         );

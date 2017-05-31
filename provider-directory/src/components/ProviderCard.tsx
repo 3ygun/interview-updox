@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Provider } from '../types/';
 
-export class ProviderCard extends React.Component<Provider, object> {
+export class ProviderCard extends React.Component<Provider, {}> {
     render() {
         return (
             <div className="card">

@@ -1,22 +1,14 @@
 import * as React from 'react';
+import { Component } from 'react';
+import { observer } from 'mobx-react';
 import './App.css';
 
 import { ProviderManager } from '../data/ProviderManager';
 import { ProviderDisplay } from './ProviderDisplay';
 import { ProviderEditor } from './ProviderEditor';
 
-export interface Props {
-  providerManager: ProviderManager;
-}
-
-class App extends React.Component<{}, null> {
-  manager: ProviderManager;
-
-  constructor() {
-    super();
-    this.manager = new ProviderManager();
-  }
-
+@observer
+class App extends Component<{manager: ProviderManager}, {}> {
   renderNavbar() {
     return (
       <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
@@ -37,10 +29,10 @@ class App extends React.Component<{}, null> {
         <div className="container">
           <div className="row">
             <div className="col">
-              <ProviderEditor providerManager={this.manager} />
+              <ProviderEditor manager={this.props.manager} />
             </div>
             <div className="col">
-              <ProviderDisplay providerManager={this.manager} />
+              <ProviderDisplay manager={this.props.manager} />
             </div>
           </div>
         </div>
