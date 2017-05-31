@@ -1,13 +1,19 @@
 import * as React from 'react';
 
 import { Props } from './App';
-// import { ProviderManager } from '../data/ProviderManager';
+import { ProviderCard } from './ProviderCard';
 
 export class ProviderDisplay extends React.Component<Props, object> {
     render() {
         return (
             <div>
-                Provider Display
+                {
+                    this.props.providerManager.getProviders().map(
+                        (provider, uid) => {
+                            return <ProviderCard {...provider} key={uid} />
+                        }
+                    )
+                }
             </div>
         );
     }

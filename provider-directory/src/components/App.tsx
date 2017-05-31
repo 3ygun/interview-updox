@@ -32,10 +32,18 @@ class App extends React.Component<{}, null> {
     const navbar = this.renderNavbar();
 
     return (
-      <div>
+      <div className="container-fluid">
         {navbar}
-        <ProviderEditor providerManager={this.manager} />
-        <ProviderDisplay providerManager={this.manager} />
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <ProviderEditor providerManager={this.manager} />
+            </div>
+            <div className="col">
+              <ProviderDisplay providerManager={this.manager} />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

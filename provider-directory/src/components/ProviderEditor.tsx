@@ -1,10 +1,6 @@
 import * as React from 'react';
 
-import { ProviderManager } from '../data/ProviderManager';
-
-export interface Props {
-    providerManager: ProviderManager;
-}
+import { Props } from './App';
 
 export class ProviderEditor extends React.Component<Props, object> {
     render() {
