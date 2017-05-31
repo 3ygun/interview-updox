@@ -10,7 +10,7 @@ export class ProviderDisplay extends React.Component<Props, object> {
                 {
                     this.props.providerManager.getProviders().map(
                         (provider, uid) => {
-                            return <ProviderCard {...provider} key={uid} />
+                            return <ProviderCard {...provider} key={uid} />;
                         }
                     )
                 }
