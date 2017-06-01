@@ -94,22 +94,6 @@ public class PrimeNumberGeneratorTest {
     }
 
     @Test
-    public void generate_0_102__Increasing_ReveredOrder() {
-        List<Integer> expected = this.PRIMES_0_102;
-        Collections.reverse(expected);
-        List<Integer> got = this.generator.generate(0, 102);
-        assertEquals(expected, got);
-    }
-
-    @Test
-    public void generate_102_0__Decreasing_ReveredOrder() {
-        List<Integer> expected = this.PRIMES_0_102;
-        Collections.reverse(expected);
-        List<Integer> got = this.generator.generate(102, 0);
-        assertEquals(expected, got);
-    }
-
-    @Test
     public void generate_40_102__Increasing() {
         List<Integer> expected = Arrays.asList(new Integer[]{41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101});
         List<Integer> got = this.generator.generate(40, 102);
@@ -181,5 +165,10 @@ public class PrimeNumberGeneratorTest {
     @Test
     public void isPrime_7902() {
         assertFalse(this.generator.isPrime(7902));
+    }
+
+    @Test
+    public void isPrime_7903() {
+        assertFalse(this.generator.isPrime(7903));
     }
 }
