@@ -1,52 +1,50 @@
 package com.interview;
 
-import java.util.Scanner;
+import java.io.PrintStream;
 
 public class Prompt {
     private static final String QUIT = "q";
+    private final Asker asker;
+    private final PrintStream out;
+    private final PrimeNumberGenerator generator;
 
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        PrimeNumberGenerator generator = new PrimeNumberGenerator();
-
-        System.out.println("Welcome to the Prime Number Generator!");
-        System.out.println("Provide q as the answer to a prompt to quit at any time!");
-        System.out.println();
-        while (true) {
-            PromptResult result;
-
-            result = prompt("What is the starting value? ", in);
-            if (result.quit) {
-                break;
-            }
-            int startingValue = result.value;
-
-            result = prompt("What is the ending value? ", in);
-            if (result.quit) {
-                break;
-            }
-            int endingValue = result.value;
-
-            System.out.println();
-            System.out.println("Prime Numbers in the range of " + startingValue + " to " + endingValue + " are:");
-            System.out.println(generator.generate(startingValue, endingValue));
-            System.out.println();
-        }
-        System.out.println("Thanks Updoxs!");
+    public Prompt(Asker asker, PrintStream out, PrimeNumberGenerator generator) {
+        this.asker = asker;
+        this.out = out;
+        this.generator = generator;
     }
 
-    private static PromptResult prompt(String message, Scanner in) {
+    public void run() {
+        out.println("Welcome to the Prime Number Generator!");
+        out.println("Provide q as the answer to a prompt to quit at any time!");
+        out.println();
+        try {
+            while (true) {
+                int startingValue = prompt("What is the starting value? ");
+                int endingValue = prompt("What is the ending value? ");
+
+                out.println();
+                out.print("Prime Numbers in the range of " + startingValue + " to " + endingValue + " are: ");
+                out.println(generator.generate(startingValue, endingValue));
+                out.println();
+            }
+        } catch (QuitException e) {
+            out.println(e.getMessage());
+        }
+    }
+
+    public int prompt(String message) throws QuitException {
         while (true) {
-            System.out.print(message);
+            out.print(message);
+            String line = asker.ask();
             try {
-                String line = in.nextLine();
                 if (line.toLowerCase().equals(QUIT)) {
-                    return new PromptResult(true, 0);
+                    throw new QuitException("Quiting. Thanks Updoxs!");
                 } else {
-                    return new PromptResult(false, Integer.parseInt(line));
+                    return Integer.parseInt(line);
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Retry! Number or q");
+                out.println("Retry! Number or q");
             }
         }
     }
