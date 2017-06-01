@@ -5,18 +5,18 @@ import { Provider } from '../types/';
 export class ProviderCard extends React.Component<Provider, {}> {
     render() {
         return (
-            <div className="card">
+            <div className="card" style={{width: "100%"}}>
                 <div className="card-block row">
-                    <div className="col-1">
+                    <div className="col-1 flex-center">
                         {this.props.children}
                     </div>
                     <div className="col">
                         <h2>{this.props.last_name}, {this.props.first_name}</h2>
-                        <h4>{this.props.email_address}</h4>
+                        <a href={"mailto:" + this.props.email_address}>{this.props.email_address}</a>
                     </div>
-                    <div className="col">
-                        <h3>{this.props.specialty}</h3>
-                        <h4>{this.props.practice_name}</h4>
+                    <div className="col" style={{textAlign: "right"}}>
+                        <h4>{this.props.specialty}</h4>
+                        <h5>{this.props.practice_name}</h5>
                     </div>
                 </div>
             </div>

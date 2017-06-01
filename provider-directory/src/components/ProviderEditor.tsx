@@ -43,7 +43,7 @@ export class ProviderEditor extends Component<{manager: ProviderManager}, Provid
             <div>
                 <h2>Create Provider</h2>
 
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} className="Provider-Editor">
                     <label className="row">
                         Last Name:
                         <input type="text" name="last_name" value={this.state.last_name} onChange={this.handleChange} />

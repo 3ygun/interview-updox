@@ -59,9 +59,8 @@ export class ProviderDisplay extends Component<{ manager: ProviderManager }, { t
                                     </ProviderCard>
                                 </div>
                             );
-
                         })}
-                        <input type="submit" value="Remove" />
+                        <input type="submit" value="Remove" style={{margin: "10px", float: "right"}} />
                     </form>
                 </div>
             </div>

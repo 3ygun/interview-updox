@@ -27,8 +27,8 @@ class App extends Component<{manager: ProviderManager}, {}> {
       <div className="container-fluid">
         {navbar}
         <div className="container">
-          <div className="row">
-            <div className="col">
+          <div className="row App-Padding">
+            <div className="col-4">
               <ProviderEditor manager={this.props.manager} />
             </div>
             <div className="col">
