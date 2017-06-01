@@ -40,3 +40,9 @@
 .editor-padding {
   margin: 10px;
 }
+
+.provider-display {
+  height: 500px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}

@@ -48,16 +48,18 @@ export class ProviderDisplay extends Component<{ manager: ProviderManager }, { t
 
                 <div>
                     <form onSubmit={this.handleSubmit}>
-                        {providers.map((provider, uid) => {
-                            return (
-                                <ProviderCard {...provider} key={uid}>
-                                    <input className="col-1" type="checkbox"
-                                        name={String(provider.id)}
-                                        checked={this.state.toRemove.indexOf(provider.id) > -1}
-                                        onChange={this.handleSelect} />
-                                </ProviderCard>
-                            );
-                        })}
+                        <div className="provider-display">
+                            {providers.map((provider, uid) => {
+                                return (
+                                    <ProviderCard {...provider} key={uid}>
+                                        <input className="col-1" type="checkbox"
+                                            name={String(provider.id)}
+                                            checked={this.state.toRemove.indexOf(provider.id) > -1}
+                                            onChange={this.handleSelect} />
+                                    </ProviderCard>
+                                );
+                            })}
+                        </div>
                         <input type="submit" value="Remove" style={{ margin: "10px", float: "right" }} />
                     </form>
                 </div>
