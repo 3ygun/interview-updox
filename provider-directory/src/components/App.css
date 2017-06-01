@@ -29,10 +29,14 @@
   justify-content: center;
 }
 
-.Provider-Editor input {
+.Provider-Editor label, .Provider-Editor input {
   width: 100%;
 }
 
-.App-Padding > div {
-  padding: 30px;
+.Red-Star {
+  color: red;
+}
+
+.editor-padding {
+  margin: 10px;
 }

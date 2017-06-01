@@ -43,24 +43,22 @@ export class ProviderDisplay extends Component<{ manager: ProviderManager }, { t
         const providers = this.props.manager.getProviders;
 
         return (
-            <div>
-                <h2>Provider List</h2>
+            <div className="card card-block editor-padding">
+                <h2 className="card-title">Provider List</h2>
 
                 <div>
                     <form onSubmit={this.handleSubmit}>
                         {providers.map((provider, uid) => {
                             return (
-                                <div key={uid} className="row">
-                                    <ProviderCard {...provider} >
-                                        <input className="col-1" type="checkbox"
+                                <ProviderCard {...provider} key={uid}>
+                                    <input className="col-1" type="checkbox"
                                         name={String(provider.id)}
                                         checked={this.state.toRemove.indexOf(provider.id) > -1}
                                         onChange={this.handleSelect} />
-                                    </ProviderCard>
-                                </div>
+                                </ProviderCard>
                             );
                         })}
-                        <input type="submit" value="Remove" style={{margin: "10px", float: "right"}} />
+                        <input type="submit" value="Remove" style={{ margin: "10px", float: "right" }} />
                     </form>
                 </div>
             </div>
