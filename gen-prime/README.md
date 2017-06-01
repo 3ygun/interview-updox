@@ -4,7 +4,7 @@
 
 - Maven Test: `mvn test`
 - Maven Package: `mvn package`
-- Java Run: `java -cp .\target\interview-1.0.0.jar com.interview.Hello`
+- Java Run: `java -cp .\target\interview-1.0.0.jar com.interview.Prompt`
 
 ## Overview
 
