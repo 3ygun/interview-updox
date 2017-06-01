@@ -11,8 +11,8 @@ React with TypeScript App
 - [ ] Type ahead searching is a nice to have.
 - [ ] Should not require a web server, and should be able to run offline.
 - [x] Last Name, First Name and Email Address are required fields.
-- [ ] Match the spirit of the mock up but artistic freedom is encouraged.
-    - [ ] Be prepared to discuss the design choices you make.
+- [x] Match the spirit of the mock up but artistic freedom is encouraged.
+    - [x] Be prepared to discuss the design choices you make.
 - [x] All data exchanges should be in JSON format.
 
 ## Used Material

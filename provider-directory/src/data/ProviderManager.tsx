@@ -9,6 +9,7 @@ export class ProviderManager {
     @observable private providers: Provider[] = [];
     @observable private sortBy: string = 'last_name';
     @observable private order: string = 'asc';
+    @observable private search: string = '';
     private nextID: number = 0;
 
     constructor(
@@ -31,6 +32,11 @@ export class ProviderManager {
         this.providers = this.providers.filter(
             provider => providerIDs.indexOf(provider.id) == -1
         );
+    }
+
+    @action
+    setSearch(search: string) {
+        this.search = search.toLocaleLowerCase();
     }
 
     @action
@@ -74,11 +80,20 @@ export class ProviderManager {
     get getProviders(): Provider[] {
         var providers = this.providers.sort(this.getCompareFunc());
 
+        if (this.search !== '') {
+            providers = providers.filter(item => item[this.sortBy]!.toLocaleLowerCase().indexOf(this.search) > -1);
+        }
+
         if (this.order === 'dsc') {
             return providers.reverse();
         } else {
             return providers;
         }
+    }
+
+    @computed
+    get getProvidersLength(): number {
+        return this.providers.length;
     }
 }
 

@@ -4,6 +4,7 @@ import { observer } from 'mobx-react';
 
 import { ProviderManager } from '../data/ProviderManager';
 import { ProviderCard } from './ProviderCard';
+import { ProviderDisplayHeader } from './ProviderDisplayHeader';
 
 @observer
 export class ProviderDisplay extends Component<{ manager: ProviderManager }, { toRemove: number[] }> {
@@ -15,10 +16,15 @@ export class ProviderDisplay extends Component<{ manager: ProviderManager }, { t
             toRemove: new Array<number>(),
         }
 
+        this.handleSearchChange = this.handleSearchChange.bind(this);
         this.handleOrderChange = this.handleOrderChange.bind(this);
         this.handleSortChange = this.handleSortChange.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSearchChange(event: any) {
+        this.props.manager.setSearch(event.target.value);
     }
 
     handleOrderChange(event: any) {
@@ -54,42 +60,25 @@ export class ProviderDisplay extends Component<{ manager: ProviderManager }, { t
 
         return (
             <div className="card card-block editor-padding">
-                <div className="row">
-                    <div className="col">
-                        <h2 className="card-title" >Provider List</h2>
+                <ProviderDisplayHeader manager={this.props.manager} />
+                <form onSubmit={this.handleSubmit}>
+                    <div className="provider-display">
+                        {providers.map((provider, uid) => {
+                            return (
+                                <ProviderCard {...provider} key={uid}>
+                                    <input className="col-1" type="checkbox"
+                                        name={String(provider.id)}
+                                        checked={this.state.toRemove.indexOf(provider.id) > -1}
+                                        onChange={this.handleSelect} />
+                                </ProviderCard>
+                            );
+                        })}
                     </div>
-                    <div className="col">
-                        <select style={{ float: "right" }} onChange={this.handleSortChange} value={this.props.manager.getSortBy}>
-                            <option value="last_name">Last Name</option>
-                            <option value="first_name">First Name</option>
-                            <option value="email_address">Email Address</option>
-                            <option value="specialty">Specialty</option>
-                            <option value="practice_name">Practice Name</option>
-                        </select>
-                        <select style={{ float: "right" }} onChange={this.handleOrderChange} value={this.props.manager.getOrder}>
-                            <option value="asc">Ascending</option>
-                            <option value="dsc">Descending</option>
-                        </select>
+                    <div style={{ margin: "10px" }}>
+                        <span>{providers.length} of {this.props.manager.getProvidersLength} entries</span>
+                        <input type="submit" value="Remove" style={{ float: "right" }} />
                     </div>
-                </div>
-
-                <div>
-                    <form onSubmit={this.handleSubmit}>
-                        <div className="provider-display">
-                            {providers.map((provider, uid) => {
-                                return (
-                                    <ProviderCard {...provider} key={uid}>
-                                        <input className="col-1" type="checkbox"
-                                            name={String(provider.id)}
-                                            checked={this.state.toRemove.indexOf(provider.id) > -1}
-                                            onChange={this.handleSelect} />
-                                    </ProviderCard>
-                                );
-                            })}
-                        </div>
-                        <input type="submit" value="Remove" style={{ margin: "10px", float: "right" }} />
-                    </form>
-                </div>
+                </form>
             </div>
         );
     }
