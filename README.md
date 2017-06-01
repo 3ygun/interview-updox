@@ -2,6 +2,14 @@
 
 It was a pleasure meeting you today.  For this challenge, point me to your github repo when finished or send me a git bundle.  Please push a commit at the 1 hour of work point so I can review your early progress.  After that you can take whatever time you need to complete the project.  I encourage you to be creative while also thinking about usability. Feel free to contact me with any questions.
 
+# Challenges
+
+## UI Challenge Final
+
+Final UI Challenge static non served version is found in `final/provider-directory/index.html`
+- This was generated from `yarn build` then stripping the static file structure around the `.js` and `.css` files and changing the imports
+- All the code is in `provider-directory/` with the approach taken in the [README](provider-directory/)
+
 # UI Challenge:
 
 Provider Directory v2.0
