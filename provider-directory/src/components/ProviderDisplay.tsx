@@ -15,8 +15,18 @@ export class ProviderDisplay extends Component<{ manager: ProviderManager }, { t
             toRemove: new Array<number>(),
         }
 
+        this.handleOrderChange = this.handleOrderChange.bind(this);
+        this.handleSortChange = this.handleSortChange.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleOrderChange(event: any) {
+        this.props.manager.setOrder(event.target.value);
+    }
+
+    handleSortChange(event: any) {
+        this.props.manager.setSortBy(event.target.value);
     }
 
     handleSelect(event: any) {
@@ -40,11 +50,28 @@ export class ProviderDisplay extends Component<{ manager: ProviderManager }, { t
     }
 
     render() {
-        const providers = this.props.manager.getProviders;
+        var providers = this.props.manager.getProviders;
 
         return (
             <div className="card card-block editor-padding">
-                <h2 className="card-title">Provider List</h2>
+                <div className="row">
+                    <div className="col">
+                        <h2 className="card-title" >Provider List</h2>
+                    </div>
+                    <div className="col">
+                        <select style={{ float: "right" }} onChange={this.handleSortChange} value={this.props.manager.getSortBy}>
+                            <option value="last_name">Last Name</option>
+                            <option value="first_name">First Name</option>
+                            <option value="email_address">Email Address</option>
+                            <option value="specialty">Specialty</option>
+                            <option value="practice_name">Practice Name</option>
+                        </select>
+                        <select style={{ float: "right" }} onChange={this.handleOrderChange} value={this.props.manager.getOrder}>
+                            <option value="asc">Ascending</option>
+                            <option value="dsc">Descending</option>
+                        </select>
+                    </div>
+                </div>
 
                 <div>
                     <form onSubmit={this.handleSubmit}>
