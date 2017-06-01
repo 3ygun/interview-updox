@@ -1,10 +1,27 @@
 # Prime Number Generator
 
+Make a TDD prime number generator based on a range input scheme and a prompt for it.
+
 ## Make
 
 - Maven Test: `mvn test`
 - Maven Package: `mvn package`
 - Java Run: `java -cp .\target\interview-1.0.0.jar com.interview.Main`
+
+## Process
+
+1. Create the project skeleton (I'm using VS Code with the Java plugin and maven in PowerShell)
+2. Create tests for `isPrime(int value)` then make them pass
+3. Create tests for `generate(int startValue, int endValue)` then make them pass
+4. Correct mistakes
+5. Add prompt to `main`
+    - I couldn't decide on how best to do it at first
+6. Realize I need to test the prompt
+7. Went down a rabbit hole of how to mock `System.in` and `System.out`
+8. Extracted everything into a `Prompt` class
+9. Realized I needed more testing help and added Mockito <3
+10. Rewrote the `Prompt`, `Main` and `Asker` to facilitate dependency injection and testability
+11. Hope I'm done going to turn in...
 
 ## Overview
 

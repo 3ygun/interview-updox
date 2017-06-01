@@ -10,6 +10,10 @@ Final UI Challenge static non served version is found in `final/provider-directo
 - This was generated from `yarn build` then stripping the static file structure around the `.js` and `.css` files and changing the imports
 - All the code is in `provider-directory/` with the approach taken in the [README](provider-directory/)
 
+## Prime Number & TDD Challenge
+
+Implemented in `gen-prime/` with the build and testing instructions in the `gen-prime/README.md`
+
 # UI Challenge:
 
 Provider Directory v2.0
